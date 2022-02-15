@@ -24,7 +24,8 @@ import {
   ExpandLess,
   ExpandMore,
   Person,
-  AssignmentInd
+  AssignmentInd,
+  EventNote
  } from '@material-ui/icons';
 
  import { Link, withRouter } from 'react-router-dom';
@@ -45,7 +46,7 @@ const useStyles = makeStyles((theme) => ({
 
 }));
 
-export default function SideBar() {
+export default function OwnerSideBar() {
 
   const [open, setOpen] = useState(false);
 
@@ -71,41 +72,41 @@ export default function SideBar() {
                 </MenuItem>
               </Link>
 
-                <MenuItem onClick={handleClick}>
-                  <ListItemIcon style={{color:'#D1D8DB'}}>
-                      <People />
-                  </ListItemIcon>
-                  <Typography style={{color:'#D1D8DB'}}>Users</Typography>
-                  {open ? <ExpandLess /> : <ExpandMore />}
-                </MenuItem>
-             
-                <Collapse in={open} timeout="auto" unmountOnExit>
-                  <Link to='/salonowners'>
-                    <MenuItem className={classes.nested}>
+                  <Link to='/staff'>
+                    <MenuItem >
                       <ListItemIcon style={{color:'#D1D8DB'}}>
                           <AssignmentInd />
                       </ListItemIcon>
-                      <Typography style={{color:'#D1D8DB'}}>Salon Owners</Typography>
+                      <Typography style={{color:'#D1D8DB'}}>Staff</Typography>
                     </MenuItem>
                   </Link>
 
                   <Link to='/clients'>
-                    <MenuItem className={classes.nested}>
+                    <MenuItem>
                       <ListItemIcon style={{color:'#D1D8DB'}}>
                           <Person />
                       </ListItemIcon>
                       <Typography style={{color:'#D1D8DB'}}>Clients</Typography>
                     </MenuItem>
                   </Link>
-                </Collapse>
 
-              <MenuItem>
-                <ListItemIcon style={{color:'#D1D8DB'}}>
-                    <Store />
-                </ListItemIcon>
-                <Typography style={{color:'#D1D8DB'}}>Salons</Typography>
-              </MenuItem>
+                  <Link to='/calendar'>
+                    <MenuItem>
+                      <ListItemIcon style={{color:'#D1D8DB'}}>
+                          <EventNote />
+                      </ListItemIcon>
+                      <Typography style={{color:'#D1D8DB'}}>Calendar</Typography>
+                    </MenuItem>
+                  </Link>
 
+              <Link to='/branches'>
+                <MenuItem>
+                  <ListItemIcon style={{color:'#D1D8DB'}}>
+                      <Store />
+                  </ListItemIcon>
+                  <Typography style={{color:'#D1D8DB'}}>Branches</Typography>
+                </MenuItem>
+              </Link>
               {/*To use as sample*/}
 
               <Link to='#'>
@@ -117,22 +118,43 @@ export default function SideBar() {
                   <ListItemIcon style={{color:'#D1D8DB'}}>
                       <Schedule />
                   </ListItemIcon>
-                  <Typography style={{color:'#D1D8DB'}}>Bookings</Typography>
+                  <Typography style={{color:'#D1D8DB'}}>Appointments</Typography>
                 </MenuItem>
               </Link>
 
-              <MenuItem>
+              <MenuItem onClick={handleClick}>
                 <ListItemIcon style={{color:'#D1D8DB'}}>
                     <Payment />
                 </ListItemIcon>
-                <Typography style={{color:'#D1D8DB'}}>Finances</Typography>
+                <Typography style={{color:'#D1D8DB'}}>Reports</Typography>
+                {open ? <ExpandLess /> : <ExpandMore />}
               </MenuItem>
+
+              <Collapse in={open} timeout="auto" unmountOnExit>
+                  <Link to='/reports/revenue'>
+                    <MenuItem className={classes.nested}>
+                      <ListItemIcon style={{color:'#D1D8DB'}}>
+                          <AssignmentInd />
+                      </ListItemIcon>
+                      <Typography style={{color:'#D1D8DB'}}>Client Report</Typography>
+                    </MenuItem>
+                  </Link>
+
+                  <Link to='/clients'>
+                    <MenuItem className={classes.nested}>
+                      <ListItemIcon style={{color:'#D1D8DB'}}>
+                          <Person />
+                      </ListItemIcon>
+                      <Typography style={{color:'#D1D8DB'}}>Revenue Report</Typography>
+                    </MenuItem>
+                  </Link>
+                </Collapse>
 
               <MenuItem>
                 <ListItemIcon style={{color:'#D1D8DB'}}>
                     <Category />
                 </ListItemIcon>
-                <Typography style={{color:'#D1D8DB'}}>Categories</Typography>
+                <Typography style={{color:'#D1D8DB'}}>Services</Typography>
               </MenuItem>
 
               <MenuItem>
@@ -141,17 +163,21 @@ export default function SideBar() {
                 </ListItemIcon>
                 <Typography style={{color:'#D1D8DB'}}>Reports</Typography>
               </MenuItem>
+
+              <Link to='/settings'>
               <MenuItem>
                 <ListItemIcon style={{color:'#D1D8DB'}}>
                     <Settings />
                 </ListItemIcon>
                 <Typography style={{color:'#D1D8DB'}}>Settings</Typography>
               </MenuItem>
+              </Link>
+
               <MenuItem>
                 <ListItemIcon style={{color:'#D1D8DB'}}>
                     <Loyalty />
                 </ListItemIcon>
-                <Typography style={{color:'#D1D8DB'}}>Promos</Typography>
+                <Typography style={{color:'#D1D8DB'}}>Gallery</Typography>
               </MenuItem>
               <MenuItem>
                 <ListItemIcon style={{color:'#D1D8DB'}}>

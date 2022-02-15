@@ -6,24 +6,8 @@ import {
    Paper,
    Typography,
   } from '@material-ui/core'
-import Map from '../components/Map';
-import SalonCard from '../components/salonCard';
-
-const useStyles = makeStyles((theme) =>({
-
-  rideCards:{
-    marginTop:theme.spacing(2)
-  },
-  rideCard:{
-    width:'90%',
-    height:100
-  },
-  mapContainer:{
-    padding:theme.spacing(2),
-    marginTop:theme.spacing(2)
-  }
-
-}));
+import Map from '../../components/Map';
+import SalonCard from '../../components/salonCard';
 
 export default function Dashboard() {
 
@@ -61,19 +45,35 @@ export default function Dashboard() {
               </Grid>
             </Container>
             <Container className={classes.mapContainer}>
+              
               <Grid container>
-                <Grid item xs={9}>
-                  <Map />
-                </Grid>
-                <Grid item xs={3}>
+                <Grid item xs={12}>
                   <Typography>
                     Salons in Johannesburg
                   </Typography>
-                  <SalonCard />
+                  
                 </Grid>
-                 
+
               </Grid>
             </Container>
     </div>
   )
+  
 }
+
+
+const useStyles = makeStyles((theme) =>({
+
+  rideCards:{
+    marginTop:theme.spacing(2)
+  },
+  rideCard:{
+    width:'90%',
+    height:100
+  },
+  mapContainer:{
+    padding:theme.spacing(2),
+    marginTop:theme.spacing(2)
+  }
+
+}));
